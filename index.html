@@ -118,6 +118,35 @@
       background-color: #ffe6f0;
     }
 
+    form {
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff0f5;
+      border-radius: 12px;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(204, 0, 102, 0.2);
+    }
+
+    form input, form select, form button {
+      padding: 10px;
+      margin: 8px 0;
+      width: 100%;
+      font-size: 16px;
+      border: 1px solid #ff99cc;
+      border-radius: 6px;
+    }
+
+    form button {
+      background-color: #ff99cc;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #e06699;
+    }
+
     @media (max-width: 768px) {
       header {
         flex-direction: row;
@@ -148,6 +177,20 @@
   </header>
 
   <main>
+    <form id="zapasForm">
+      <h3>Pridať výsledok zápasu</h3>
+      <select name="skupina" required>
+        <option value="">Vyber skupinu</option>
+        <option value="A">Skupina A</option>
+        <option value="B">Skupina B</option>
+      </select>
+      <input type="text" name="tim1" placeholder="Tím 1" required />
+      <input type="number" name="gol1" placeholder="Góly tím 1" required />
+      <input type="text" name="tim2" placeholder="Tím 2" required />
+      <input type="number" name="gol2" placeholder="Góly tím 2" required />
+      <button type="submit">Pridať zápas</button>
+    </form>
+
     <h2>Skupina A</h2>
     <div class="group">
       <table id="tabulkaA">
@@ -186,10 +229,7 @@
     async function nacitajZapasy() {
       const response = await fetch('data/zapasy.json');
       const zapasy = await response.json();
-      const skupiny = {
-        A: {},
-        B: {}
-      };
+      const skupiny = { A: {}, B: {} };
 
       function pridajTim(skupina, nazov) {
         if (!skupiny[skupina][nazov]) {
@@ -220,6 +260,7 @@
 
       for (const skupina in skupiny) {
         const tabulka = document.getElementById(`tabulka${skupina}`);
+        tabulka.innerHTML = '<tr><th>Tím</th><th>Z</th><th>V</th><th>R</th><th>P</th><th>G</th><th>Body</th></tr>';
         const timy = Object.values(skupiny[skupina]).sort((a, b) => b.body - a.body || (b.skore - b.inkas) - (a.skore - a.inkas));
         timy.forEach(t => {
           t.g = `${t.skore}:${t.inkas}`;
@@ -231,7 +272,33 @@
     }
 
     nacitajZapasy();
+
+    document.getElementById('zapasForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const zapas = {
+        skupina: formData.get('skupina'),
+        tim1: formData.get('tim1'),
+        gol1: parseInt(formData.get('gol1')),
+        tim2: formData.get('tim2'),
+        gol2: parseInt(formData.get('gol2'))
+      };
+
+      const response = await fetch('data/zapasy.json');
+      const zapasy = await response.json();
+      zapasy.push(zapas);
+
+      await fetch('data/zapasy.json', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(zapasy)
+      });
+
+      nacitajZapasy();
+      e.target.reset();
+    });
   </script>
 </body>
 </html>
+
 
