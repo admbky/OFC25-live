@@ -1,15 +1,15 @@
 [
-  { "skupina": "A", "tim1": "Tím A1", "gol1": null, "tim2": "Tím A2", "gol2": null },
-  { "skupina": "A", "tim1": "Tím A1", "gol1": null, "tim2": "Tím A3", "gol2": null },
-  { "skupina": "A", "tim1": "Tím A1", "gol1": null, "tim2": "Tím A4", "gol2": null },
-  { "skupina": "A", "tim1": "Tím A2", "gol1": null, "tim2": "Tím A3", "gol2": null },
-  { "skupina": "A", "tim1": "Tím A2", "gol1": null, "tim2": "Tím A4", "gol2": null },
-  { "skupina": "A", "tim1": "Tím A3", "gol1": null, "tim2": "Tím A4", "gol2": null },
+  { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "INVALIDO", "gol2": null },
+  { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "Baŕanie ŕohy", "gol2": null },
+  { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
+  { "skupina": "A", "tim1": "INVALIDO", "gol1": null, "tim2": "Baŕanie ŕohy", "gol2": null },
+  { "skupina": "A", "tim1": "INVALIDO", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
+  { "skupina": "A", "tim1": "Baŕanie ŕohy", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
 
-  { "skupina": "B", "tim1": "Tím B1", "gol1": null, "tim2": "Tím B2", "gol2": null },
-  { "skupina": "B", "tim1": "Tím B1", "gol1": null, "tim2": "Tím B3", "gol2": null },
-  { "skupina": "B", "tim1": "Tím B1", "gol1": null, "tim2": "Tím B4", "gol2": null },
-  { "skupina": "B", "tim1": "Tím B2", "gol1": null, "tim2": "Tím B3", "gol2": null },
-  { "skupina": "B", "tim1": "Tím B2", "gol1": null, "tim2": "Tím B4", "gol2": null },
-  { "skupina": "B", "tim1": "Tím B3", "gol1": null, "tim2": "Tím B4", "gol2": null }
+  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "ŠK Altius", "gol2": null },
+  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "Tím 1", "gol2": null },
+  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "Tím 2", "gol2": null },
+  { "skupina": "B", "tim1": "ŠK Altius", "gol1": null, "tim2": "Tím 1", "gol2": null },
+  { "skupina": "B", "tim1": "ŠK Altius", "gol1": null, "tim2": "Tím 2", "gol2": null },
+  { "skupina": "B", "tim1": "Tím 1", "gol1": null, "tim2": "Tím 2", "gol2": null }
 ]
