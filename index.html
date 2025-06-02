@@ -136,7 +136,7 @@
 </head>
 <body>
   <header>
-    <img src="obrazky/LOGO.webp" alt="Logo">
+    <img src="/Users/vbabc/Desktop/ADAM projekty/OFC25/LOGO.webp" alt="Logo">
     <nav>
       <a href="index.html">Tabuľka</a>
       <a href="rozpis.html">Rozpis</a>
@@ -183,25 +183,55 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    async function nacitajTabulky() {
-      const response = await fetch('data/vysledky.json');
-      const data = await response.json();
+    async function nacitajZapasy() {
+      const response = await fetch('data/zapasy.json');
+      const zapasy = await response.json();
+      const skupiny = {
+        A: {},
+        B: {}
+      };
 
-      function naplnTabulku(id, skupina) {
-        const tabulka = document.getElementById(id);
-        const zoradene = skupina.sort((a, b) => b.body - a.body);
-        zoradene.forEach(tim => {
+      function pridajTim(skupina, nazov) {
+        if (!skupiny[skupina][nazov]) {
+          skupiny[skupina][nazov] = { tim: nazov, z: 0, v: 0, r: 0, p: 0, skore: 0, inkas: 0, g: '0:0', body: 0 };
+        }
+      }
+
+      zapasy.forEach(zapas => {
+        const { skupina, tim1, gol1, tim2, gol2 } = zapas;
+        pridajTim(skupina, tim1);
+        pridajTim(skupina, tim2);
+
+        const t1 = skupiny[skupina][tim1];
+        const t2 = skupiny[skupina][tim2];
+
+        t1.z++; t2.z++;
+        t1.skore += gol1; t1.inkas += gol2;
+        t2.skore += gol2; t2.inkas += gol1;
+
+        if (gol1 > gol2) {
+          t1.v++; t2.p++; t1.body += 3;
+        } else if (gol1 < gol2) {
+          t2.v++; t1.p++; t2.body += 3;
+        } else {
+          t1.r++; t2.r++; t1.body += 1; t2.body += 1;
+        }
+      });
+
+      for (const skupina in skupiny) {
+        const tabulka = document.getElementById(`tabulka${skupina}`);
+        const timy = Object.values(skupiny[skupina]).sort((a, b) => b.body - a.body || (b.skore - b.inkas) - (a.skore - a.inkas));
+        timy.forEach(t => {
+          t.g = `${t.skore}:${t.inkas}`;
           const row = document.createElement('tr');
-          row.innerHTML = `<td>${tim.tim}</td><td>${tim.z}</td><td>${tim.v}</td><td>${tim.r}</td><td>${tim.p}</td><td>${tim.g}</td><td>${tim.body}</td>`;
+          row.innerHTML = `<td>${t.tim}</td><td>${t.z}</td><td>${t.v}</td><td>${t.r}</td><td>${t.p}</td><td>${t.g}</td><td>${t.body}</td>`;
           tabulka.appendChild(row);
         });
       }
-
-      naplnTabulku('tabulkaA', data.skupinaA);
-      naplnTabulku('tabulkaB', data.skupinaB);
     }
 
-    nacitajTabulky();
+    nacitajZapasy();
   </script>
 </body>
 </html>
+
