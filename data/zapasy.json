@@ -7,9 +7,9 @@
   { "skupina": "A", "tim1": "Baŕanie ŕohy", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
 
   { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "ŠK Altius", "gol2": null },
-  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "Tím 1", "gol2": null },
-  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "Tím 2", "gol2": null },
-  { "skupina": "B", "tim1": "ŠK Altius", "gol1": null, "tim2": "Tím 1", "gol2": null },
-  { "skupina": "B", "tim1": "ŠK Altius", "gol1": null, "tim2": "Tím 2", "gol2": null },
-  { "skupina": "B", "tim1": "Tím 1", "gol1": null, "tim2": "Tím 2", "gol2": null }
+  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "Neznámy 1", "gol2": null },
+  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "Neznámy 2", "gol2": null },
+  { "skupina": "B", "tim1": "ŠK Altius", "gol1": null, "tim2": "Neznámy 1", "gol2": null },
+  { "skupina": "B", "tim1": "ŠK Altius", "gol1": null, "tim2": "Neznámy 2", "gol2": null },
+  { "skupina": "B", "tim1": "Neznámy 1", "gol1": null, "tim2": "Neznámy 2", "gol2": null }
 ]
