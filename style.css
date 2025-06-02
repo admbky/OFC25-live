@@ -1,21 +1,111 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #ffe6f0;
-  text-align: center;
-}
-table {
-  margin: 20px auto;
-  border-collapse: collapse;
-  width: 80%;
-  max-width: 600px;
-}
-th, td {
-  padding: 10px;
-  border: 1px solid #cc99cc;
-}
-thead {
-  background-color: #ffb3d9;
-}
-h1, h2 {
-  color: #cc0066;
-}
+<style>
+    body {
+      background-color: #ffe6f0;
+      color: #4d0039;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ff99cc;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    .countdown-container {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .countdown-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #80004d;
+      margin-bottom: 5px;
+    }
+
+    .countdown-time {
+      font-size: 18px;
+      color: #4d0039;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #4d0039;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    nav a:hover {
+      color: #cc0066;
+    }
+
+    main {
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: #cc0066;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .group {
+      margin-bottom: 50px;
+    }
+
+    .group h3 {
+      font-size: 28px;
+      color: #800040;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 80%;
+      max-width: 800px;
+      background-color: #fff0f5;
+      box-shadow: 0 4px 12px rgba(204, 0, 102, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #ffcce0;
+      font-size: 18px;
+    }
+
+    th {
+      background-color: #ffb3d9;
+      color: #4d0039;
+    }
+
+    td:first-child {
+      text-align: left;
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background-color: #ffe6f0;
+    }
+  </style>
+
