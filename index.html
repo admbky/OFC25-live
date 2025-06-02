@@ -136,7 +136,7 @@
 </head>
 <body>
   <header>
-    <img src="obrazky/LOGO.webp" alt="Logo">
+    <img src="/Users/vbabc/Desktop/ADAM projekty/OFC25/LOGO.webp" alt="Logo">
     <nav>
       <a href="index.html">Tabuľka</a>
       <a href="rozpis.html">Rozpis</a>
@@ -184,7 +184,7 @@
     setInterval(updateCountdown, 1000);
 
     async function nacitajZapasy() {
-      const response = await fetch('data/zapasy.json');
+      const response = await fetch('data/zapasy.json?t=' + new Date().getTime());
       const zapasy = await response.json();
       const skupiny = { A: {}, B: {} };
 
@@ -195,30 +195,28 @@
       }
 
       zapasy.forEach(zapas => {
-  const { skupina, tim1, gol1, tim2, gol2 } = zapas;
+        const { skupina, tim1, gol1, tim2, gol2 } = zapas;
 
-  pridajTim(skupina, tim1);
-  pridajTim(skupina, tim2);
+        pridajTim(skupina, tim1);
+        pridajTim(skupina, tim2);
 
-  // Ak výsledok ešte nie je zadaný, preskočíme zápas
-  if (gol1 === null || gol2 === null) return;
+        if (gol1 === null || gol2 === null) return;
 
-  const t1 = skupiny[skupina][tim1];
-  const t2 = skupiny[skupina][tim2];
+        const t1 = skupiny[skupina][tim1];
+        const t2 = skupiny[skupina][tim2];
 
-  t1.z++; t2.z++;
-  t1.skore += gol1; t1.inkas += gol2;
-  t2.skore += gol2; t2.inkas += gol1;
+        t1.z++; t2.z++;
+        t1.skore += gol1; t1.inkas += gol2;
+        t2.skore += gol2; t2.inkas += gol1;
 
-  if (gol1 > gol2) {
-    t1.v++; t2.p++; t1.body += 3;
-  } else if (gol1 < gol2) {
-    t2.v++; t1.p++; t2.body += 3;
-  } else {
-    t1.r++; t2.r++; t1.body += 1; t2.body += 1;
-  }
-});
-
+        if (gol1 > gol2) {
+          t1.v++; t2.p++; t1.body += 3;
+        } else if (gol1 < gol2) {
+          t2.v++; t1.p++; t2.body += 3;
+        } else {
+          t1.r++; t2.r++; t1.body += 1; t2.body += 1;
+        }
+      });
 
       for (const skupina in skupiny) {
         const tabulka = document.getElementById(`tabulka${skupina}`);
@@ -237,3 +235,4 @@
   </script>
 </body>
 </html>
+
