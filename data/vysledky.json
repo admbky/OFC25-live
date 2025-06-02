@@ -1,0 +1,14 @@
+{
+  "skupinaA": [
+    {"tim": "Ošípané", "body": 6, "v": 2, "r": 0, "p": 0, "g": "7:3"},
+    {"tim": "ŠK Altius", "body": 3, "v": 1, "r": 0, "p": 1, "g": "4:4"},
+    {"tim": "Salibandy Bois", "body": 0, "v": 0, "r": 0, "p": 2, "g": "2:6"},
+    {"tim": "Tím číslo 7", "body": 0, "v": 0, "r": 0, "p": 0, "g": "0:0"}
+  ],
+  "skupinaB": [
+    {"tim": "INVALIDO", "body": 6, "v": 2, "r": 0, "p": 0, "g": "8:2"},
+    {"tim": "Baŕanie ŕohy", "body": 3, "v": 1, "r": 0, "p": 1, "g": "5:5"},
+    {"tim": "FBC stavbári", "body": 0, "v": 0, "r": 0, "p": 2, "g": "2:8"},
+    {"tim": "Tím číslo 8", "body": 0, "v": 0, "r": 0, "p": 0, "g": "0:0"}
+  ]
+}
