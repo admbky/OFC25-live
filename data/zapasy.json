@@ -1,0 +1,15 @@
+[
+  { "skupina": "A", "tim1": "Tím A1", "gol1": null, "tim2": "Tím A2", "gol2": null },
+  { "skupina": "A", "tim1": "Tím A1", "gol1": null, "tim2": "Tím A3", "gol2": null },
+  { "skupina": "A", "tim1": "Tím A1", "gol1": null, "tim2": "Tím A4", "gol2": null },
+  { "skupina": "A", "tim1": "Tím A2", "gol1": null, "tim2": "Tím A3", "gol2": null },
+  { "skupina": "A", "tim1": "Tím A2", "gol1": null, "tim2": "Tím A4", "gol2": null },
+  { "skupina": "A", "tim1": "Tím A3", "gol1": null, "tim2": "Tím A4", "gol2": null },
+
+  { "skupina": "B", "tim1": "Tím B1", "gol1": null, "tim2": "Tím B2", "gol2": null },
+  { "skupina": "B", "tim1": "Tím B1", "gol1": null, "tim2": "Tím B3", "gol2": null },
+  { "skupina": "B", "tim1": "Tím B1", "gol1": null, "tim2": "Tím B4", "gol2": null },
+  { "skupina": "B", "tim1": "Tím B2", "gol1": null, "tim2": "Tím B3", "gol2": null },
+  { "skupina": "B", "tim1": "Tím B2", "gol1": null, "tim2": "Tím B4", "gol2": null },
+  { "skupina": "B", "tim1": "Tím B3", "gol1": null, "tim2": "Tím B4", "gol2": null }
+]
