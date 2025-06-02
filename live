@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turnaj – Tabuľka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ffe6f0;
+      color: #4d0039;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ff99cc;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    .countdown-container {
+      text-align: right;
+      flex: 1;
+    }
+
+    .countdown-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #80004d;
+      margin-bottom: 5px;
+    }
+
+    .countdown-time {
+      font-size: 16px;
+      color: #4d0039;
+    }
+
+    nav {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #4d0039;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      color: #cc0066;
+    }
+
+    main {
+      padding: 40px 20px;
+    }
+
+    h2 {
+      color: #cc0066;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .group {
+      margin-bottom: 50px;
+    }
+
+    .group h3 {
+      font-size: 28px;
+      color: #800040;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 80%;
+      max-width: 800px;
+      background-color: #fff0f5;
+      box-shadow: 0 4px 12px rgba(204, 0, 102, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #ffcce0;
+      font-size: 18px;
+    }
+
+    th {
+      background-color: #ffb3d9;
+      color: #4d0039;
+    }
+
+    td:first-child {
+      text-align: left;
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background-color: #ffe6f0;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      nav {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .countdown-container {
+        text-align: right;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/Users/vbabc/Desktop/ADAM projekty/OFC25/LOGO.webp" alt="Logo">
+    <nav>
+      <a href="index.html">Tabuľka</a>
+      <a href="rozpis.html">Rozpis</a>
+    </nav>
+    <div class="countdown-container">
+      <div class="countdown-title">OFC25</div>
+      <div class="countdown-time" id="countdown">Načítavam odpočítavanie...</div>
+    </div>
+  </header>
+
+  <main>
+    <h2>Skupina A</h2>
+    <div class="group">
+      <table id="tabulkaA">
+        <tr><th>Tím</th><th>Z</th><th>V</th><th>R</th><th>P</th><th>G</th><th>Body</th></tr>
+      </table>
+    </div>
+
+    <h2>Skupina B</h2>
+    <div class="group">
+      <table id="tabulkaB">
+        <tr><th>Tím</th><th>Z</th><th>V</th><th>R</th><th>P</th><th>G</th><th>Body</th></tr>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    const countdownEl = document.getElementById("countdown");
+    const tournamentStart = new Date("2025-07-06T09:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = tournamentStart - now;
+      if (diff <= 0) {
+        countdownEl.textContent = "Turnaj práve začal!";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdownEl.textContent = `Začiatok turnaja: ${days} dní ${hours}h ${minutes}m ${seconds}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    async function nacitajTabulky() {
+      const response = await fetch('data/vysledky.json');
+      const data = await response.json();
+
+      function naplnTabulku(id, skupina) {
+        const tabulka = document.getElementById(id);
+        const zoradene = skupina.sort((a, b) => b.body - a.body);
+        zoradene.forEach(tim => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${tim.tim}</td><td>${tim.z}</td><td>${tim.v}</td><td>${tim.r}</td><td>${tim.p}</td><td>${tim.g}</td><td>${tim.body}</td>`;
+          tabulka.appendChild(row);
+        });
+      }
+
+      naplnTabulku('tabulkaA', data.skupinaA);
+      naplnTabulku('tabulkaB', data.skupinaB);
+    }
+
+    nacitajTabulky();
+  </script>
+</body>
+</html>
