@@ -1,6 +1,6 @@
 [
-  { "skupina": "A", "tim1": "Ošípané", "gol1": 8, "tim2": "INVALIDO", "gol2": 2 },
-  { "skupina": "A", "tim1": "Ošípané", "gol1": 2, "tim2": "Baŕanie ŕohy", "gol2": 3 },
+  { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "INVALIDO", "gol2": null },
+  { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "Baŕanie ŕohy", "gol2": null },
   { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
   { "skupina": "A", "tim1": "INVALIDO", "gol1": null, "tim2": "Baŕanie ŕohy", "gol2": null },
   { "skupina": "A", "tim1": "INVALIDO", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
