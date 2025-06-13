@@ -155,13 +155,7 @@
     }
 
     main {
-      background: white;  /* biele pozadie pre rozpis */
-      max-width: 700px;
-      margin: 40px auto 60px auto;
       padding: 40px 20px;
-      box-shadow: 0 3px 15px rgba(204, 0, 102, 0.1);
-      border-radius: 12px;
-      text-align: center;
     }
 
     h2 {
@@ -217,7 +211,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="obrazky/LOGO.webp" alt="Logo" />
+      <img src="https://d1di2lzuh97fh2.cloudfront.net/files/3d/3di/3divu9.svg?ph=ofc2571" alt="Logo" />
     </div>
 
     <div class="countdown-container">
@@ -245,52 +239,16 @@
     <div class="match"><span class="group">A</span><span class="time">09:00</span><span class="teams">Ošípané <span class="vs">vs</span> ŠK Altius</span></div>
     <div class="match"><span class="group">B</span><span class="time">09:30</span><span class="teams">INVALIDO <span class="vs">vs</span> Baŕanie ŕohy</span></div>
     <div class="match"><span class="group">A</span><span class="time">10:00</span><span class="teams">Salibandy Bois <span class="vs">vs</span> Tím číslo 7</span></div>
-    <div class="match"><span class="group">B</span><span class="time">10:30</span><span class="teams">FBC stavbári <span class="vs">vs</span> Poslední z Plechu</span></div>
+    <div class="match"><span class="group">B</span><span class="time">10:30</span><span class="teams">FBC stavbári <span class="vs">vs</span> Tím číslo 8</span></div>
     <div class="match"><span class="group">A</span><span class="time">11:00</span><span class="teams">Ošípané <span class="vs">vs</span> Salibandy Bois</span></div>
     <div class="match"><span class="group">B</span><span class="time">11:30</span><span class="teams">INVALIDO <span class="vs">vs</span> FBC stavbári</span></div>
     <div class="match"><span class="group">A</span><span class="time">12:00</span><span class="teams">ŠK Altius <span class="vs">vs</span> Tím číslo 7</span></div>
-    <div class="match"><span class="group">B</span><span class="time">12:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> Poslední z Plechu</span></div>
-  </main>
+    <div class="match"><span class="group">B</span><span class="time">12:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> Tím číslo 8</span></div>
+    <div class="match"><span class="group">A</span><span class="time">13:00</span><span class="teams">Ošípané <span class="vs">vs</span> Tím číslo 7</span></div>
+    <div class="match"><span class="group">B</span><span class="time">13:30</span><span class="teams">INVALIDO <span class="vs">vs</span> Tím číslo 8</span></div>
+    <div class="match"><span class="group">A</span><span class="time">14:00</span><span class="teams">ŠK Altius <span class="vs">vs</span> Salibandy Bois</span></div>
+    <div class="match"><span class="group">B</span><span class="time">14:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> FBC stavbári</span></div>
 
-  <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('open');
-      navMenu.classList.toggle('open');
-    });
-
-    menuToggle.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuToggle.click();
-      }
-    });
-
-    const countdownEl = document.getElementById("countdown");
-    const tournamentStart = new Date("2025-07-06T09:00:00");
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = tournamentStart - now;
-
-      if (diff <= 0) {
-        countdownEl.textContent = "Turnaj práve začal!";
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      countdownEl.textContent = `Začiatok turnaja: ${days} dní ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-</body>
-</html>
+    <h2 class="section-title">Štvrťfinále</h2>
+    <div class="match"><span class="group">QF1</span><span class="time">15:00</span><span class="teams">1A <span class="vs">vs</span> 4
 
