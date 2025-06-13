@@ -24,53 +24,53 @@
       flex-wrap: wrap;
     }
 
-    .logo {
-      flex: 0 0 auto;
-      text-align: left;
-    }
-
     .logo img {
       height: 40px;
     }
 
-    .nav-wrapper {
-      flex: 2 1 auto;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
+    .dropdown {
+      position: relative;
+      display: inline-block;
     }
 
-    nav a {
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff0f5;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 6px;
+    }
+
+    .dropdown-content a {
       color: #4d0039;
+      padding: 10px 14px;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      padding: 6px 10px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+      display: block;
     }
 
-    nav a:hover {
-      color: #cc0066;
+    .dropdown-content a:hover {
       background-color: #ffd1e6;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     .countdown-container {
       flex: 1 0 auto;
-      text-align: right;
+      text-align: center;
     }
 
     .countdown-title {
       font-size: 16px;
       font-weight: bold;
       color: #80004d;
-      margin-bottom: 2px;
     }
 
     .countdown-time {
       font-size: 14px;
-      color: #4d0039;
     }
 
     main {
@@ -131,17 +131,12 @@
 
     @media (max-width: 768px) {
       header {
-        flex-wrap: nowrap;
-        padding: 5px 10px;
+        flex-direction: column;
+        align-items: center;
       }
-      .logo, .countdown-container {
-        text-align: center;
-        flex: 0 0 auto;
-      }
-      .nav-wrapper {
-        flex-grow: 1;
-        justify-content: center;
-        gap: 8px;
+      .countdown-container {
+        order: 1;
+        margin: 10px 0;
       }
     }
   </style>
@@ -149,13 +144,14 @@
 <body>
   <header>
     <div class="logo">
-      <img src="obrazky/LOGO.webp" alt="Logo">
+      <img src="/Users/vbabc/Desktop/ADAM projekty/OFC25/LOGO.webp" alt="Logo">
     </div>
-    <div class="nav-wrapper">
-      <nav>
-        <a href="index.html">Tabuľka</a>
+    <div class="dropdown">
+      <span style="cursor:pointer;font-weight:bold;font-size:14px;">Menu ▾</span>
+      <div class="dropdown-content">
         <a href="rozpis.html">Rozpis</a>
-      </nav>
+        <a href="index.html">Tabuľka</a>
+      </div>
     </div>
     <div class="countdown-container">
       <div class="countdown-title">OFC25</div>
@@ -251,4 +247,3 @@
   </script>
 </body>
 </html>
-
