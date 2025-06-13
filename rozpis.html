@@ -7,13 +7,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffe6f0; /* ružové pozadie */
+      background-color: #ffe6f0;
       color: #4d0039;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
       text-align: center;
     }
-
     header {
       background-color: #ff99cc;
       padding: 10px 20px;
@@ -23,139 +23,78 @@
       flex-wrap: wrap;
       position: relative;
     }
-
-    .logo img {
-      height: 40px;
+    header img {
+      height: 60px;
     }
-
     .countdown-container {
       flex-grow: 1;
       text-align: center;
+      color: #80004d;
+    }
+    .countdown-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .countdown-time {
+      font-size: 18px;
       color: #4d0039;
     }
-
-    .countdown-title {
-      font-size: 16px;
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+    nav a {
+      color: #4d0039;
+      text-decoration: none;
       font-weight: bold;
-      color: #80004d;
-      margin-bottom: 2px;
+      font-size: 20px;
     }
-
-    .countdown-time {
-      font-size: 14px;
+    nav a:hover {
+      color: #cc0066;
     }
-
     /* Hamburger menu */
     .menu-toggle {
-      display: flex;
+      display: none;
       flex-direction: column;
-      justify-content: space-around;
-      width: 28px;
-      height: 22px;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
       cursor: pointer;
-      z-index: 10;
     }
-
     .menu-toggle span {
-      width: 28px;
+      display: block;
       height: 3px;
       background-color: #4d0039;
-      border-radius: 2px;
-      transition: all 0.3s ease;
+      border-radius: 3px;
+      transition: 0.3s;
     }
-
-    nav.nav-menu {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background: #ff99cc;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(204, 0, 102, 0.3);
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.3s ease;
-      width: 160px;
-    }
-
-    nav.nav-menu.open {
-      max-height: 200px;
-    }
-
-    nav.nav-menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 10px 0;
-    }
-
-    nav.nav-menu ul li {
-      margin: 0;
-    }
-
-    nav.nav-menu ul li a {
-      display: block;
-      padding: 12px 20px;
-      text-decoration: none;
-      color: #4d0039;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    nav.nav-menu ul li a:hover {
-      background-color: #cc0066;
-      color: white;
-    }
-
-    .menu-toggle.open span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-toggle.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    @media (min-width: 768px) {
-      .menu-toggle {
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      nav {
         display: none;
+        flex-direction: column;
+        background-color: #ff99cc;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 150px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(204, 0, 102, 0.3);
+        z-index: 10;
       }
-
-      nav.nav-menu {
-        position: static;
-        max-height: none;
-        width: auto;
-        box-shadow: none;
-        background: transparent;
+      nav.active {
         display: flex;
-        align-items: center;
       }
-
-      nav.nav-menu ul {
+      .menu-toggle {
         display: flex;
-        gap: 30px;
-        padding: 0;
-      }
-
-      nav.nav-menu ul li a {
-        padding: 0;
-        font-size: 20px;
-        color: #4d0039;
-      }
-
-      nav.nav-menu ul li a:hover {
-        color: #cc0066;
-        background: none;
-      }
-
-      .countdown-container {
-        text-align: center;
       }
     }
 
     main {
+      background-color: #fff;
       padding: 40px 20px;
+      min-height: 100vh;
     }
 
     h2 {
@@ -210,26 +149,19 @@
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="https://d1di2lzuh97fh2.cloudfront.net/files/3d/3di/3divu9.svg?ph=ofc2571" alt="Logo" />
-    </div>
-
+    <img src="https://d1di2lzuh97fh2.cloudfront.net/files/3d/3di/3divu9.svg?ph=ofc2571" alt="Logo" />
     <div class="countdown-container">
       <div class="countdown-title">OFC25</div>
       <div class="countdown-time" id="countdown">Načítavam odpočítavanie...</div>
     </div>
-
-    <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" tabindex="0">
+    <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span>
       <span></span>
       <span></span>
     </div>
-
-    <nav id="nav-menu" class="nav-menu">
-      <ul>
-        <li><a href="index.html">Tabuľka</a></li>
-        <li><a href="rozpis.html">Rozpis</a></li>
-      </ul>
+    <nav id="nav-menu">
+      <a href="index.html">Tabuľka</a>
+      <a href="rozpis.html">Rozpis</a>
     </nav>
   </header>
 
@@ -290,25 +222,20 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
+    // Toggle nav menu on hamburger click
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
 
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('open');
-      navMenu.classList.toggle('open');
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
     });
 
-    // Accessibility: toggle menu by keyboard (Enter or Space)
-    menuToggle.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        menuToggle.classList.toggle('open');
-        navMenu.classList.toggle('open');
+    // Optional: keyboard accessibility for hamburger
+    menuToggle.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        navMenu.classList.toggle("active");
       }
     });
   </script>
 </body>
 </html>
-
-
