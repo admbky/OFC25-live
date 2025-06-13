@@ -250,5 +250,65 @@
     <div class="match"><span class="group">B</span><span class="time">14:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> FBC stavbári</span></div>
 
     <h2 class="section-title">Štvrťfinále</h2>
-    <div class="match"><span class="group">QF1</span><span class="time">15:00</span><span class="teams">1A <span class="vs">vs</span> 4
+    <div class="match"><span class="group">QF1</span><span class="time">15:00</span><span class="teams">1A <span class="vs">vs</span> 4B</span></div>
+    <div class="match"><span class="group">QF2</span><span class="time">15:30</span><span class="teams">2B <span class="vs">vs</span> 3A</span></div>
+    <div class="match"><span class="group">QF3</span><span class="time">16:00</span><span class="teams">1B <span class="vs">vs</span> 4A</span></div>
+    <div class="match"><span class="group">QF4</span><span class="time">16:30</span><span class="teams">2A <span class="vs">vs</span> 3B</span></div>
+
+    <h2 class="section-title">Semifinále</h2>
+    <div class="match"><span class="group">SF1</span><span class="time">17:00</span><span class="teams">VSF č.1 <span class="vs">vs</span> VSF č.2</span></div>
+    <div class="match"><span class="group">SF2</span><span class="time">17:30</span><span class="teams">VSF č.3 <span class="vs">vs</span> VSF č.4</span></div>
+
+    <h2 class="section-title">Zápas o 3. miesto</h2>
+    <div class="match"><span class="group">3M</span><span class="time">18:00</span><span class="teams">PSF č.1 <span class="vs">vs</span> PSF č.2</span></div>
+
+    <h2 class="section-title">Finále – OFC25</h2>
+    <div class="match"><span class="group">FIN</span><span class="time">18:30</span><span class="teams">VSF č.1 <span class="vs">vs</span> VSF č.2</span></div>
+  </main>
+
+  <script>
+    const countdownEl = document.getElementById("countdown");
+    const tournamentStart = new Date("2025-07-06T09:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = tournamentStart - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "Turnaj práve začal!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.textContent = `Začiatok turnaja: ${days} dní ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+
+    // Accessibility: toggle menu by keyboard (Enter or Space)
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuToggle.classList.toggle('open');
+        navMenu.classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>
+
 
