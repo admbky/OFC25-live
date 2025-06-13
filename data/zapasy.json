@@ -1,15 +1,16 @@
 [
-  { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "INVALIDO", "gol2": null },
-  { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "Baŕanie ŕohy", "gol2": null },
-  { "skupina": "A", "tim1": "Ošípané", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
-  { "skupina": "A", "tim1": "INVALIDO", "gol1": null, "tim2": "Baŕanie ŕohy", "gol2": null },
-  { "skupina": "A", "tim1": "INVALIDO", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
-  { "skupina": "A", "tim1": "Baŕanie ŕohy", "gol1": null, "tim2": "FBC stavbári", "gol2": null },
+  { "skupina": "A", "tim1": "Ošípané", "tim2": "INVALIDO", "gol1": null, "gol2": null },
+  { "skupina": "A", "tim1": "Ošípané", "tim2": "Baŕanie ŕohy", "gol1": null, "gol2": null },
+  { "skupina": "A", "tim1": "Ošípané", "tim2": "FBC stavbári", "gol1": null, "gol2": null },
+  { "skupina": "A", "tim1": "INVALIDO", "tim2": "Baŕanie ŕohy", "gol1": null, "gol2": null },
+  { "skupina": "A", "tim1": "INVALIDO", "tim2": "FBC stavbári", "gol1": null, "gol2": null },
+  { "skupina": "A", "tim1": "Baŕanie ŕohy", "tim2": "FBC stavbári", "gol1": null, "gol2": null },
 
-  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "ŠK Altius", "gol2": null },
-  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "Neznámy 1", "gol2": null },
-  { "skupina": "B", "tim1": "Salibandy Bois", "gol1": null, "tim2": "Neznámy 2", "gol2": null },
-  { "skupina": "B", "tim1": "ŠK Altius", "gol1": null, "tim2": "Neznámy 1", "gol2": null },
-  { "skupina": "B", "tim1": "ŠK Altius", "gol1": null, "tim2": "Neznámy 2", "gol2": null },
-  { "skupina": "B", "tim1": "Neznámy 1", "gol1": null, "tim2": "Neznámy 2", "gol2": null }
+  { "skupina": "B", "tim1": "Salibandy Bois", "tim2": "ŠK Altius", "gol1": null, "gol2": null },
+  { "skupina": "B", "tim1": "Salibandy Bois", "tim2": "Bleskobabky", "gol1": null, "gol2": null },
+  { "skupina": "B", "tim1": "Salibandy Bois", "tim2": "Považskí legonári", "gol1": null, "gol2": null },
+  { "skupina": "B", "tim1": "ŠK Altius", "tim2": "Bleskobabky", "gol1": null, "gol2": null },
+  { "skupina": "B", "tim1": "ŠK Altius", "tim2": "Považskí legonári", "gol1": null, "gol2": null },
+  { "skupina": "B", "tim1": "Bleskobabky", "tim2": "Považskí legonári", "gol1": null, "gol2": null }
 ]
+
