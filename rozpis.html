@@ -21,40 +21,41 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
-    header img {
-      height: 60px;
+    .logo img {
+      height: 40px;
     }
 
     .countdown-container {
       flex-grow: 1;
       text-align: center;
+      color: #4d0039;
     }
 
     .countdown-title {
-      font-size: 28px;
+      font-size: 16px;
       font-weight: bold;
       color: #80004d;
-      margin-bottom: 5px;
+      margin-bottom: 2px;
     }
 
     .countdown-time {
-      font-size: 18px;
-      color: #4d0039;
+      font-size: 14px;
     }
 
     nav {
       display: flex;
-      gap: 30px;
+      gap: 20px;
+      font-weight: 700;
     }
 
     nav a {
       color: #4d0039;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 20px;
+      font-weight: 700;
+      font-size: 16px;
     }
 
     nav a:hover {
@@ -117,7 +118,9 @@
 </head>
 <body>
   <header>
-    <img src="https://d1di2lzuh97fh2.cloudfront.net/files/3d/3di/3divu9.svg?ph=ofc2571" alt="Logo">
+    <div class="logo">
+      <img src="obrazky/LOGO.webp" alt="Logo">
+    </div>
     <div class="countdown-container">
       <div class="countdown-title">OFC25</div>
       <div class="countdown-time" id="countdown">Načítavam odpočítavanie...</div>
@@ -133,14 +136,14 @@
 
     <div class="match"><span class="group">A</span><span class="time">09:00</span><span class="teams">Ošípané <span class="vs">vs</span> ŠK Altius</span></div>
     <div class="match"><span class="group">B</span><span class="time">09:30</span><span class="teams">INVALIDO <span class="vs">vs</span> Baŕanie ŕohy</span></div>
-    <div class="match"><span class="group">A</span><span class="time">10:00</span><span class="teams">Salibandy Bois <span class="vs">vs</span> Tím číslo 7</span></div>
-    <div class="match"><span class="group">B</span><span class="time">10:30</span><span class="teams">FBC stavbári <span class="vs">vs</span> Tím číslo 8</span></div>
+    <div class="match"><span class="group">A</span><span class="time">10:00</span><span class="teams">Salibandy Bois <span class="vs">vs</span> Bleskobabky</span></div>
+    <div class="match"><span class="group">B</span><span class="time">10:30</span><span class="teams">FBC stavbári <span class="vs">vs</span> Považskí legonári</span></div>
     <div class="match"><span class="group">A</span><span class="time">11:00</span><span class="teams">Ošípané <span class="vs">vs</span> Salibandy Bois</span></div>
     <div class="match"><span class="group">B</span><span class="time">11:30</span><span class="teams">INVALIDO <span class="vs">vs</span> FBC stavbári</span></div>
-    <div class="match"><span class="group">A</span><span class="time">12:00</span><span class="teams">ŠK Altius <span class="vs">vs</span> Tím číslo 7</span></div>
-    <div class="match"><span class="group">B</span><span class="time">12:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> Tím číslo 8</span></div>
-    <div class="match"><span class="group">A</span><span class="time">13:00</span><span class="teams">Ošípané <span class="vs">vs</span> Tím číslo 7</span></div>
-    <div class="match"><span class="group">B</span><span class="time">13:30</span><span class="teams">INVALIDO <span class="vs">vs</span> Tím číslo 8</span></div>
+    <div class="match"><span class="group">A</span><span class="time">12:00</span><span class="teams">ŠK Altius <span class="vs">vs</span> Bleskobabky</span></div>
+    <div class="match"><span class="group">B</span><span class="time">12:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> Považskí legonári</span></div>
+    <div class="match"><span class="group">A</span><span class="time">13:00</span><span class="teams">Ošípané <span class="vs">vs</span> Bleskobabky</span></div>
+    <div class="match"><span class="group">B</span><span class="time">13:30</span><span class="teams">INVALIDO <span class="vs">vs</span> Považskí legonári</span></div>
     <div class="match"><span class="group">A</span><span class="time">14:00</span><span class="teams">ŠK Altius <span class="vs">vs</span> Salibandy Bois</span></div>
     <div class="match"><span class="group">B</span><span class="time">14:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> FBC stavbári</span></div>
 
@@ -157,35 +160,5 @@
     <h2 class="section-title">Zápas o 3. miesto</h2>
     <div class="match"><span class="group">3M</span><span class="time">18:00</span><span class="teams">PSF č.1 <span class="vs">vs</span> PSF č.2</span></div>
 
-    <h2 class="section-title">Finále – OFC25</h2>
-    <div class="match"><span class="group">FIN</span><span class="time">18:30</span><span class="teams">VSF č.1 <span class="vs">vs</span> VSF č.2</span></div>
-  </main>
-
-  <script>
-    const countdownEl = document.getElementById("countdown");
-    const tournamentStart = new Date("2025-07-06T09:00:00");
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = tournamentStart - now;
-
-      if (diff <= 0) {
-        countdownEl.textContent = "Turnaj práve začal!";
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      countdownEl.textContent = `Začiatok turnaja: ${days} dní ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-</body>
-</html>
-
+    <h2 class="section-title">Finále – OFC25
 
