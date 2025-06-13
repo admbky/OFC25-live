@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rozpis zápasov</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turnaj – Rozpis</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff0f5;
+      background-color: #ffe6f0;
       color: #4d0039;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
 
     header {
       background-color: #ff99cc;
-      padding: 10px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
 
-    .logo img {
-      height: 40px;
+    header img {
+      height: 60px;
     }
 
     .countdown-container {
@@ -31,212 +34,158 @@
     }
 
     .countdown-title {
-      font-size: 16px;
+      font-size: 28px;
       font-weight: bold;
       color: #80004d;
+      margin-bottom: 5px;
     }
 
     .countdown-time {
-      font-size: 14px;
-    }
-
-    .hamburger {
-      font-size: 24px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    #sidebar {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      right: 0;
-      background-color: #fff0f5;
-      overflow-x: hidden;
-      transition: 0.3s;
-      padding-top: 60px;
-      box-shadow: -2px 0 5px rgba(0,0,0,0.5);
-      z-index: 1000;
-    }
-
-    #sidebar a {
-      padding: 10px 20px;
-      text-decoration: none;
       font-size: 18px;
       color: #4d0039;
-      display: block;
     }
 
-    #sidebar a:hover {
-      background-color: #ffd1e6;
+    nav {
+      display: flex;
+      gap: 30px;
     }
 
-    #overlay {
-      position: fixed;
-      display: none;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-color: rgba(0,0,0,0.4);
-      z-index: 999;
+    nav a {
+      color: #4d0039;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    nav a:hover {
+      color: #cc0066;
     }
 
     main {
       padding: 40px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #cc0066;
-    }
-
-    section {
-      margin-bottom: 40px;
     }
 
     h2 {
+      color: #cc0066;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      margin-top: 60px;
+      font-size: 28px;
       color: #800040;
     }
 
-    table {
-      width: 100%;
+    .match {
+      font-size: 22px;
+      margin: 12px auto;
+      padding: 14px 20px;
+      background-color: #ffd6eb;
       max-width: 600px;
-      margin: 0 auto;
-      border-collapse: collapse;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(204, 0, 102, 0.2);
-      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(204, 0, 102, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
     }
 
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid #ffcce0;
+    .match .group {
+      font-weight: bold;
+      color: #800040;
+      min-width: 30px;
     }
 
-    th {
-      background-color: #ffb3d9;
+    .match .time {
+      font-weight: bold;
+      min-width: 70px;
     }
 
-    tr:last-child td {
-      border-bottom: none;
+    .match .teams {
+      font-weight: 700;
+      color: #33001a;
     }
 
-    @media (max-width: 768px) {
-      header {
-        flex-wrap: nowrap;
-      }
-      .logo img {
-        height: 32px;
-      }
-      .countdown-title, .countdown-time {
-        font-size: 12px;
-      }
+    .vs {
+      font-weight: normal;
+      margin: 0 8px;
+      color: #660033;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="obrazky/LOGO.webp" alt="Logo">
-    </div>
+    <img src="https://d1di2lzuh97fh2.cloudfront.net/files/3d/3di/3divu9.svg?ph=ofc2571" alt="Logo">
     <div class="countdown-container">
       <div class="countdown-title">OFC25</div>
       <div class="countdown-time" id="countdown">Načítavam odpočítavanie...</div>
     </div>
-    <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+    <nav>
+      <a href="index.html">Tabuľka</a>
+      <a href="rozpis.html">Rozpis</a>
+    </nav>
   </header>
-  <div id="overlay" onclick="toggleSidebar()"></div>
-  <nav id="sidebar">
-    <a href="rozpis.html">Rozpis</a>
-    <a href="index.html">Tabuľka</a>
-  </nav>
-  <main>
-    <h1>Rozpis zápasov</h1>
-    <section>
-      <h2>Skupiny</h2>
-      <table id="rozpisSkupiny">
-        <thead>
-          <tr>
-            <th>Skupina</th>
-            <th>Tím 1</th>
-            <th>Skóre</th>
-            <th>Tím 2</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
-    <section>
-      <h2>Play-off</h2>
-      <table id="rozpisPlayoff">
-        <thead>
-          <tr>
-            <th>Fáza</th>
-            <th>Tím 1</th>
-            <th>Skóre</th>
-            <th>Tím 2</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
-  </main>
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("overlay");
-      if (sidebar.style.width === "250px") {
-        sidebar.style.width = "0";
-        overlay.style.display = "none";
-      } else {
-        sidebar.style.width = "250px";
-        overlay.style.display = "block";
-      }
-    }
 
+  <main>
+    <h2>Rozpis zápasov – Skupiny</h2>
+
+    <div class="match"><span class="group">A</span><span class="time">09:00</span><span class="teams">Ošípané <span class="vs">vs</span> ŠK Altius</span></div>
+    <div class="match"><span class="group">B</span><span class="time">09:30</span><span class="teams">INVALIDO <span class="vs">vs</span> Baŕanie ŕohy</span></div>
+    <div class="match"><span class="group">A</span><span class="time">10:00</span><span class="teams">Salibandy Bois <span class="vs">vs</span> Tím číslo 7</span></div>
+    <div class="match"><span class="group">B</span><span class="time">10:30</span><span class="teams">FBC stavbári <span class="vs">vs</span> Tím číslo 8</span></div>
+    <div class="match"><span class="group">A</span><span class="time">11:00</span><span class="teams">Ošípané <span class="vs">vs</span> Salibandy Bois</span></div>
+    <div class="match"><span class="group">B</span><span class="time">11:30</span><span class="teams">INVALIDO <span class="vs">vs</span> FBC stavbári</span></div>
+    <div class="match"><span class="group">A</span><span class="time">12:00</span><span class="teams">ŠK Altius <span class="vs">vs</span> Tím číslo 7</span></div>
+    <div class="match"><span class="group">B</span><span class="time">12:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> Tím číslo 8</span></div>
+    <div class="match"><span class="group">A</span><span class="time">13:00</span><span class="teams">Ošípané <span class="vs">vs</span> Tím číslo 7</span></div>
+    <div class="match"><span class="group">B</span><span class="time">13:30</span><span class="teams">INVALIDO <span class="vs">vs</span> Tím číslo 8</span></div>
+    <div class="match"><span class="group">A</span><span class="time">14:00</span><span class="teams">ŠK Altius <span class="vs">vs</span> Salibandy Bois</span></div>
+    <div class="match"><span class="group">B</span><span class="time">14:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> FBC stavbári</span></div>
+
+    <h2 class="section-title">Štvrťfinále</h2>
+    <div class="match"><span class="group">QF1</span><span class="time">15:00</span><span class="teams">1A <span class="vs">vs</span> 4B</span></div>
+    <div class="match"><span class="group">QF2</span><span class="time">15:30</span><span class="teams">2B <span class="vs">vs</span> 3A</span></div>
+    <div class="match"><span class="group">QF3</span><span class="time">16:00</span><span class="teams">1B <span class="vs">vs</span> 4A</span></div>
+    <div class="match"><span class="group">QF4</span><span class="time">16:30</span><span class="teams">2A <span class="vs">vs</span> 3B</span></div>
+
+    <h2 class="section-title">Semifinále</h2>
+    <div class="match"><span class="group">SF1</span><span class="time">17:00</span><span class="teams">VSF č.1 <span class="vs">vs</span> VSF č.2</span></div>
+    <div class="match"><span class="group">SF2</span><span class="time">17:30</span><span class="teams">VSF č.3 <span class="vs">vs</span> VSF č.4</span></div>
+
+    <h2 class="section-title">Zápas o 3. miesto</h2>
+    <div class="match"><span class="group">3M</span><span class="time">18:00</span><span class="teams">PSF č.1 <span class="vs">vs</span> PSF č.2</span></div>
+
+    <h2 class="section-title">Finále – OFC25</h2>
+    <div class="match"><span class="group">FIN</span><span class="time">18:30</span><span class="teams">VSF č.1 <span class="vs">vs</span> VSF č.2</span></div>
+  </main>
+
+  <script>
     const countdownEl = document.getElementById("countdown");
     const tournamentStart = new Date("2025-07-06T09:00:00");
 
     function updateCountdown() {
       const now = new Date();
       const diff = tournamentStart - now;
+
       if (diff <= 0) {
         countdownEl.textContent = "Turnaj práve začal!";
         return;
       }
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
+
       countdownEl.textContent = `Začiatok turnaja: ${days} dní ${hours}h ${minutes}m ${seconds}s`;
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
-    fetch('data/zapasy.json?t=' + new Date().getTime())
-      .then(response => response.json())
-      .then(data => {
-        const tbodySkupiny = document.querySelector('#rozpisSkupiny tbody');
-        const tbodyPlayoff = document.querySelector('#rozpisPlayoff tbody');
-
-        data.forEach(zapas => {
-          const skore = zapas.gol1 === null || zapas.gol2 === null ? '-' : `${zapas.gol1}:${zapas.gol2}`;
-          const row = document.createElement('tr');
-
-          if (zapas.skupina === 'Play-off') {
-            row.innerHTML = `<td>${zapas.faza || '—'}</td><td>${zapas.tim1}</td><td>${skore}</td><td>${zapas.tim2}</td>`;
-            tbodyPlayoff.appendChild(row);
-          } else {
-            row.innerHTML = `<td>${zapas.skupina}</td><td>${zapas.tim1}</td><td>${skore}</td><td>${zapas.tim2}</td>`;
-            tbodySkupiny.appendChild(row);
-          }
-        });
-      });
   </script>
 </body>
 </html>
+
 
