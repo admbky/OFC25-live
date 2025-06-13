@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Turnaj – Rozpis</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      background-color: #ffe6f0;
-      color: #4d0039;
-      font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffe6f0; /* ružové pozadie */
+      color: #4d0039;
       text-align: center;
     }
 
@@ -21,7 +20,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
+      position: relative;
     }
 
     .logo img {
@@ -45,23 +45,123 @@
       font-size: 14px;
     }
 
-    nav select {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      border: 2px solid #cc0066;
-      background-color: #ffe6f0;
-      color: #4d0039;
+    /* Hamburger menu */
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 28px;
+      height: 22px;
       cursor: pointer;
+      z-index: 10;
     }
-    nav select:hover {
-      border-color: #800040;
+
+    .menu-toggle span {
+      width: 28px;
+      height: 3px;
+      background-color: #4d0039;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    nav.nav-menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: #ff99cc;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(204, 0, 102, 0.3);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+      width: 160px;
+    }
+
+    nav.nav-menu.open {
+      max-height: 200px;
+    }
+
+    nav.nav-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    nav.nav-menu ul li {
+      margin: 0;
+    }
+
+    nav.nav-menu ul li a {
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #4d0039;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    nav.nav-menu ul li a:hover {
+      background-color: #cc0066;
+      color: white;
+    }
+
+    .menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
+
+      nav.nav-menu {
+        position: static;
+        max-height: none;
+        width: auto;
+        box-shadow: none;
+        background: transparent;
+        display: flex;
+        align-items: center;
+      }
+
+      nav.nav-menu ul {
+        display: flex;
+        gap: 30px;
+        padding: 0;
+      }
+
+      nav.nav-menu ul li a {
+        padding: 0;
+        font-size: 20px;
+        color: #4d0039;
+      }
+
+      nav.nav-menu ul li a:hover {
+        color: #cc0066;
+        background: none;
+      }
+
+      .countdown-container {
+        text-align: center;
+      }
     }
 
     main {
+      background: white;  /* biele pozadie pre rozpis */
+      max-width: 700px;
+      margin: 40px auto 60px auto;
       padding: 40px 20px;
+      box-shadow: 0 3px 15px rgba(204, 0, 102, 0.1);
+      border-radius: 12px;
+      text-align: center;
     }
 
     h2 {
@@ -117,26 +217,57 @@
 <body>
   <header>
     <div class="logo">
-      <img src="obrazky/LOGO.webp" alt="Logo">
+      <img src="obrazky/LOGO.webp" alt="Logo" />
     </div>
+
     <div class="countdown-container">
       <div class="countdown-title">OFC25</div>
       <div class="countdown-time" id="countdown">Načítavam odpočítavanie...</div>
     </div>
-    <nav>
-      <select onchange="if(this.value) window.location.href=this.value;">
-        <option value="">Menu</option>
-        <option value="index.html">Tabuľka</option>
-        <option value="rozpis.html">Rozpis</option>
-      </select>
+
+    <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="nav-menu" class="nav-menu">
+      <ul>
+        <li><a href="index.html">Tabuľka</a></li>
+        <li><a href="rozpis.html">Rozpis</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
-    <!-- Tvoje zápasy tu... -->
+    <h2>Rozpis zápasov – Skupiny</h2>
+
+    <div class="match"><span class="group">A</span><span class="time">09:00</span><span class="teams">Ošípané <span class="vs">vs</span> ŠK Altius</span></div>
+    <div class="match"><span class="group">B</span><span class="time">09:30</span><span class="teams">INVALIDO <span class="vs">vs</span> Baŕanie ŕohy</span></div>
+    <div class="match"><span class="group">A</span><span class="time">10:00</span><span class="teams">Salibandy Bois <span class="vs">vs</span> Tím číslo 7</span></div>
+    <div class="match"><span class="group">B</span><span class="time">10:30</span><span class="teams">FBC stavbári <span class="vs">vs</span> Poslední z Plechu</span></div>
+    <div class="match"><span class="group">A</span><span class="time">11:00</span><span class="teams">Ošípané <span class="vs">vs</span> Salibandy Bois</span></div>
+    <div class="match"><span class="group">B</span><span class="time">11:30</span><span class="teams">INVALIDO <span class="vs">vs</span> FBC stavbári</span></div>
+    <div class="match"><span class="group">A</span><span class="time">12:00</span><span class="teams">ŠK Altius <span class="vs">vs</span> Tím číslo 7</span></div>
+    <div class="match"><span class="group">B</span><span class="time">12:30</span><span class="teams">Baŕanie ŕohy <span class="vs">vs</span> Poslední z Plechu</span></div>
   </main>
 
   <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+
+    menuToggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        menuToggle.click();
+      }
+    });
+
     const countdownEl = document.getElementById("countdown");
     const tournamentStart = new Date("2025-07-06T09:00:00");
 
@@ -162,5 +293,4 @@
   </script>
 </body>
 </html>
-
 
