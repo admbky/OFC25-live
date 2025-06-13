@@ -136,7 +136,7 @@
 </head>
 <body>
   <header>
-    <img src="obrazky/LOGO.webp" alt="Logo">
+    <img src="/Users/vbabc/Desktop/ADAM projekty/OFC25/LOGO.webp" alt="Logo">
     <nav>
       <a href="index.html">Tabuľka</a>
       <a href="rozpis.html">Rozpis</a>
@@ -187,6 +187,17 @@
       const response = await fetch('data/zapasy.json?t=' + new Date().getTime());
       const zapasy = await response.json();
       const skupiny = { A: {}, B: {} };
+
+      const noveNazvy = [
+        "Ošípané",
+        "INVALIDO",
+        "Baŕanie ŕohy",
+        "FBC stavbári",
+        "Salibandy Bois",
+        "ŠK Altius",
+        "Bleskobabky",
+        "Považskí legonári"
+      ];
 
       function pridajTim(skupina, nazov) {
         if (!skupiny[skupina][nazov]) {
