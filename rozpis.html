@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Turnaj – Rozpis</title>
+  <title>Rozpis zápasov</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #ffe6f0;
-      color: #4d0039;
-      font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff0f5;
+      color: #4d0039;
     }
 
     header {
@@ -20,7 +19,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: relative;
     }
 
     .logo img {
@@ -90,23 +88,38 @@
       text-align: center;
     }
 
-    h2 {
+    h1 {
       color: #cc0066;
-      font-size: 36px;
-      margin-bottom: 20px;
     }
 
-    .zapas {
-      background-color: #fff0f5;
-      margin: 10px auto;
-      padding: 10px;
-      max-width: 500px;
+    table {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(204, 0, 102, 0.2);
-      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(204, 0, 102, 0.2);
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ffcce0;
+    }
+
+    th {
+      background-color: #ffb3d9;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
     }
 
     @media (max-width: 768px) {
+      header {
+        flex-wrap: nowrap;
+      }
       .logo img {
         height: 32px;
       }
@@ -127,16 +140,25 @@
     </div>
     <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
   </header>
-
   <div id="overlay" onclick="toggleSidebar()"></div>
   <nav id="sidebar">
     <a href="rozpis.html">Rozpis</a>
     <a href="index.html">Tabuľka</a>
   </nav>
-
   <main>
-    <h2>Rozpis zápasov</h2>
-    <div id="rozpis"></div>
+    <h1>Rozpis zápasov</h1>
+    <table id="rozpis">
+      <thead>
+        <tr>
+          <th>Skupina</th>
+          <th>Tím 1</th>
+          <th>Skóre</th>
+          <th>Tím 2</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
   </main>
 
   <script>
@@ -168,23 +190,21 @@
       const seconds = Math.floor((diff / 1000) % 60);
       countdownEl.textContent = `Začiatok turnaja: ${days} dní ${hours}h ${minutes}m ${seconds}s`;
     }
+
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    async function nacitajRozpis() {
-      const response = await fetch('data/zapasy.json?t=' + new Date().getTime());
-      const zapasy = await response.json();
-      const rozpisContainer = document.getElementById('rozpis');
-
-      zapasy.forEach(zapas => {
-        const div = document.createElement('div');
-        div.className = 'zapas';
-        div.textContent = `${zapas.tim1} ${zapas.gol1 ?? '-'}:${zapas.gol2 ?? '-'} ${zapas.tim2}`;
-        rozpisContainer.appendChild(div);
+    fetch('data/zapasy.json?t=' + new Date().getTime())
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.querySelector('#rozpis tbody');
+        data.forEach(zapas => {
+          const row = document.createElement('tr');
+          const skore = zapas.gol1 === null || zapas.gol2 === null ? '-' : `${zapas.gol1}:${zapas.gol2}`;
+          row.innerHTML = `<td>${zapas.skupina}</td><td>${zapas.tim1}</td><td>${skore}</td><td>${zapas.tim2}</td>`;
+          tbody.appendChild(row);
+        });
       });
-    }
-
-    nacitajRozpis();
   </script>
 </body>
 </html>
