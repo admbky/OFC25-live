@@ -92,6 +92,14 @@
       color: #cc0066;
     }
 
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #800040;
+    }
+
     table {
       width: 100%;
       max-width: 600px;
@@ -147,20 +155,35 @@
   </nav>
   <main>
     <h1>Rozpis zápasov</h1>
-    <table id="rozpis">
-      <thead>
-        <tr>
-          <th>Skupina</th>
-          <th>Tím 1</th>
-          <th>Skóre</th>
-          <th>Tím 2</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+    <section>
+      <h2>Skupiny</h2>
+      <table id="rozpisSkupiny">
+        <thead>
+          <tr>
+            <th>Skupina</th>
+            <th>Tím 1</th>
+            <th>Skóre</th>
+            <th>Tím 2</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Play-off</h2>
+      <table id="rozpisPlayoff">
+        <thead>
+          <tr>
+            <th>Fáza</th>
+            <th>Tím 1</th>
+            <th>Skóre</th>
+            <th>Tím 2</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
   </main>
-
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById("sidebar");
@@ -197,12 +220,20 @@
     fetch('data/zapasy.json?t=' + new Date().getTime())
       .then(response => response.json())
       .then(data => {
-        const tbody = document.querySelector('#rozpis tbody');
+        const tbodySkupiny = document.querySelector('#rozpisSkupiny tbody');
+        const tbodyPlayoff = document.querySelector('#rozpisPlayoff tbody');
+
         data.forEach(zapas => {
-          const row = document.createElement('tr');
           const skore = zapas.gol1 === null || zapas.gol2 === null ? '-' : `${zapas.gol1}:${zapas.gol2}`;
-          row.innerHTML = `<td>${zapas.skupina}</td><td>${zapas.tim1}</td><td>${skore}</td><td>${zapas.tim2}</td>`;
-          tbody.appendChild(row);
+          const row = document.createElement('tr');
+
+          if (zapas.skupina === 'Play-off') {
+            row.innerHTML = `<td>${zapas.faza || '—'}</td><td>${zapas.tim1}</td><td>${skore}</td><td>${zapas.tim2}</td>`;
+            tbodyPlayoff.appendChild(row);
+          } else {
+            row.innerHTML = `<td>${zapas.skupina}</td><td>${zapas.tim1}</td><td>${skore}</td><td>${zapas.tim2}</td>`;
+            tbodySkupiny.appendChild(row);
+          }
         });
       });
   </script>
